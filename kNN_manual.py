@@ -20,3 +20,22 @@ def hu_classify(origin_point=[0, 0], group=group, labels=labels, k=3):
     print(class_dis_pairs)
     # output the class of the point
     return class_dis_pairs[0][0]
+
+# the function to read file
+def parse_file(file_name) :
+    fr = open(file_name)
+    array_lines = fr.readlines()
+    number_lines = len(array_lines)
+    return_mat = zeros((number_lines, 3))
+
+    class_label_vector = []
+    index = 0
+
+    for line in array_lines:
+        line = line.strip()
+        list_from_line = line.split('\t')
+        return_mat[index, :] = list_from_line[0:3]
+        class_label_vector.append(int(list_from_line[-1]))
+        index += 1
+    
+    return return_mat, class_label_vector
