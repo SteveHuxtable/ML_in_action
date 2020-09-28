@@ -29,3 +29,14 @@ def calc_shannon_ent(dataset):
     return shannon_ent
 
 calc_shannon_ent(test_ds)
+
+def split_dataset(dataset, axis, value):
+    ret_dataset = []
+    for feat_vec in dataset:
+        if feat_vec[axis] == value: 
+            reduce_feat_vec = feat_vec[:axis]
+            reduce_feat_vec.extend(feat_vec[axis+1:])
+            ret_dataset.append(reduce_feat_vec)
+    return ret_dataset
+
+split_dataset(test_ds, axis=0, value=1)
