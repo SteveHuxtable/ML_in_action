@@ -91,6 +91,4 @@ def create_tree(dataset, labels):
         my_tree[best_feat_label][value] = create_tree(split_dataset(dataset, best_feat, value), sub_labels)
     return my_tree
 
-create_tree(test_ds, test_labels)
-
-del(test_list[2])
+test_tree = create_tree(test_ds, test_labels)
